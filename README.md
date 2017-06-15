@@ -116,19 +116,20 @@ Now open the web interface, your docker build is running!
 
 ### Project configuration
 
-In your repos, you can specify a few different
-configuration options, for example:
+In your repos, you can specify a few different configuration options for the
+registry. By default, if you don't specify the registry, we'll assume you want
+to push to a local registry at 127.0.0.1:5000. Otherwise, the registry should
+be the repository uri which may include a namespace. If you are using
+DockerHub, specify your username or organization namespace as the registry.
 
 ``` yaml
 redis: # name of the project, will be the name of the image as well
   registry:   127.0.0.1:5001 # url of the registry to which we're gonna push
 ```
 
-Want to push to the dockerhub?
-
 ``` yaml
-redis: # if you don't specify the registry, we'll assume you want to push to a local registry at 127.0.0.1:5000
-  registry:     dockerhub
+redis: # name of the project, will be the name of the image as well
+  registry:   namshi # use dockerhub with namshi namespace
 ```
 
 Want to publish assets to S3? Run tests? Here's a full overview of what roger
@@ -177,7 +178,7 @@ builds:
   concurrent: 5 # max number of builds to run in parallel, use ~ to disable
   retry-after: 30 # interval, in seconds, for Roger to check whether it can start queued builds
 auth: # authentication on various providers
-  dockerhub: # these credentials are only useful if you need to push to the dockerhub
+  registry: # these credentials are only useful if you need to push to a registry with authentication
     username: odino # your username on the dockerhub
     email:    alessandro.nadalin@gmail.com # your...well, you get it
     password: YOUR_DOCKERHUB_PASSWORD
