@@ -178,7 +178,7 @@ builds:
   concurrent: 5 # max number of builds to run in parallel, use ~ to disable
   retry-after: 30 # interval, in seconds, for Roger to check whether it can start queued builds
 auth: # authentication on various providers
-  dockerhub: # these credentials are only useful if you need to push to the dockerhub
+  registry: # these credentials are only useful if you need to push to a registry with authentication
     username: odino # your username on the dockerhub
     email:    alessandro.nadalin@gmail.com # your...well, you get it
     password: YOUR_DOCKERHUB_PASSWORD
