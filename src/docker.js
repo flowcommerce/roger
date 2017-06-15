@@ -148,14 +148,15 @@ docker.tag = function(imageId, buildId, branch) {
  * @see http://stackoverflow.com/questions/24814714/docker-remote-api-pull-from-docker-hub-private-registry
  */
 docker.getAuth = function(buildId, registry, buildLogger) {
-  var options = {};
+  var options = config.get('auth.registry');
 
-  if (registry === 'dockerhub') {
+  if (!options) {
+    options = {};
+
+  } else {
     buildLogger.info('[%s] Image should be pushed to the DockerHub @ hub.docker.com', buildId);
 
-    options = config.get('auth.dockerhub');
-
-    if (!options || !options.username || !options.email || !options.password) {
+    if (!options.username || !options.email || !options.password) {
       buildLogger.error('It seems that the build "%s" should be pushed to the dockerhub', buildId);
       buildLogger.error('but you forgot to add your credentials in the config file "%s"', argv.config);
       buildLogger.error();
