@@ -1,4 +1,4 @@
-<img align="right" width="160px" src="https://raw.githubusercontent.com/namshi/roger/master/bin/images/logo.png" />
+<img align="right" width="160px" src="https://raw.githubusercontent.com/namshi/roger/main/bin/images/logo.png" />
 
 # Roger
 
@@ -19,7 +19,7 @@ private repositories and push them to
 the Docker Hub or your own private
 registry out of the box.
 
-![frontend](https://raw.githubusercontent.com/namshi/roger/master/bin/images/frontend.png)
+![frontend](https://raw.githubusercontent.com/namshi/roger/main/bin/images/frontend.png)
 
 Ready to hack?
 
@@ -99,11 +99,11 @@ then visit `http://localhost:8080/api/build?repo=URL_OF_YOUR_REPO`
 and you should receive a confirmation that the build has been
 scheduled:
 
-![build-sched](https://raw.githubusercontent.com/namshi/roger/master/bin/images/build-scheduled.png)
+![build-sched](https://raw.githubusercontent.com/namshi/roger/main/bin/images/build-scheduled.png)
 
 Now open the web interface, your docker build is running!
 
-![build-frontend](https://raw.githubusercontent.com/namshi/roger/master/bin/images/build-frontend.png)
+![build-frontend](https://raw.githubusercontent.com/namshi/roger/main/bin/images/build-frontend.png)
 
 > Protip: if you do a docker-compose up in the root
 > of roger, the dev environment for roger, including
@@ -229,7 +229,7 @@ the app.
 The `myProvider.js` module needs to expose a function
 that accepts an app and register its own auth mechanism:
 it sounds more complicated than it is, so I'll just
-forward you to the [example provider](https://github.com/namshi/roger/blob/master/examples/auth/local.js).
+forward you to the [example provider](https://github.com/namshi/roger/blob/main/examples/auth/local.js).
 
 ## Use different images for building and running your app
 
@@ -319,7 +319,7 @@ Simply add a new webhook to your repo at
 `https://github.com/YOU/YOUR_PROJECT/settings/hooks/new`
 and configure it as follows:
 
-![github webhook](https://raw.githubusercontent.com/namshi/roger/master/bin/images/webhook.png)
+![github webhook](https://raw.githubusercontent.com/namshi/roger/main/bin/images/webhook.png)
 
 Roger will build everytime you push to
 github, a new tag is created or you
@@ -335,7 +335,7 @@ Once your build finishes, you can notify
 This notification lets you update the status of a PR
 by commenting on it.
 
-![comment on pull requests](https://raw.githubusercontent.com/namshi/roger/master/bin/images/notification-github.png)
+![comment on pull requests](https://raw.githubusercontent.com/namshi/roger/main/bin/images/notification-github.png)
 
 If you have a PR from the branch `my-patch`
 open and roger is building that branch, it
@@ -354,11 +354,11 @@ via email, you can simply configure
 the `emailSes` handler that will
 send emails through [Amazon SES](http://aws.amazon.com/ses/).
 
-![ses notifications](https://raw.githubusercontent.com/namshi/roger/master/bin/images/notification-ses.png)
+![ses notifications](https://raw.githubusercontent.com/namshi/roger/main/bin/images/notification-ses.png)
 
 ``` yaml
 my-project:
-  branch:       master
+  branch:       main
   from:         https://github.com/me/awesome-project
   notify:
     - emailSes
@@ -386,13 +386,13 @@ Note that:
 
 ### Notification on Slack
 Once the build is complete, it pushes a notification to a slack channel mentioned in the config
-![slack channel notification](https://raw.githubusercontent.com/namshi/roger/master/bin/images/notification-slack.png)
+![slack channel notification](https://raw.githubusercontent.com/namshi/roger/main/bin/images/notification-slack.png)
 
 To enable slack notification for individual projects the build.yml file can be updated with the slack parameter in the notification block:
 
 ``` yaml
 my-project:
-  branch:       master
+  branch:       main
   from:         https://github.com/me/awesome-project
   notify:
     - slack
@@ -558,9 +558,9 @@ You can simply issue a GET request to the endpoint
 For example, both of these URLs are valid endpoints:
 
 * `/api/build?repo=https://github.com/redis/redis`
-* `/api/build?repo=https://github.com/redis/redis&branch=master`
+* `/api/build?repo=https://github.com/redis/redis&branch=main`
 
-If you don't specify a branch, `master`
+If you don't specify a branch, `main`
 will be used.
 
 The same endpoint supports `POST` requests as well, `GET`
@@ -632,74 +632,74 @@ CONTAINER ID        IMAGE                 COMMAND                CREATED        
 12e1d7e6d260        roger_server:latest   "nodemon /src/src/in   4 minutes ago       Up 4 minutes        3000/tcp, 0.0.0.0:5000->5000/tcp   roger_server_1
 e3bf2bfa935e        registry:latest       "docker-registry"      4 minutes ago       Up 4 minutes        0.0.0.0:5001->5000/tcp             roger_registry_1
 ~  ᐅ docker logs -f --tail=0 12e1d7e6d260
-2015-01-23T14:53:29.610Z - info: Scheduled a build of 127.0.0.1:5001/redis:master
-2015-01-23T14:53:29.610Z - info: Cloning https://github.com/dockerfile/redis:master in /tmp/roger-builds/sources/redis/1422024809
-2015-01-23T14:53:32.807Z - info: Finished cloning https://github.com/dockerfile/redis:master
-2015-01-23T14:53:32.820Z - info: created tarball for 127.0.0.1:5001/redis:master
-2015-01-23T14:53:32.897Z - info: Build of 127.0.0.1:5001/redis:master is in progress...
-2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:master] Step 0 : FROM dockerfile/ubuntu
+2015-01-23T14:53:29.610Z - info: Scheduled a build of 127.0.0.1:5001/redis:main
+2015-01-23T14:53:29.610Z - info: Cloning https://github.com/dockerfile/redis:main in /tmp/roger-builds/sources/redis/1422024809
+2015-01-23T14:53:32.807Z - info: Finished cloning https://github.com/dockerfile/redis:main
+2015-01-23T14:53:32.820Z - info: created tarball for 127.0.0.1:5001/redis:main
+2015-01-23T14:53:32.897Z - info: Build of 127.0.0.1:5001/redis:main is in progress...
+2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:main] Step 0 : FROM dockerfile/ubuntu
 
-2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:master]  ---> 57d0bc345ba9
+2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:main]  ---> 57d0bc345ba9
 
-2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:master] Step 1 : RUN cd /tmp &&   wget http://download.redis.io/redis-stable.tar.gz &&   tar xvzf redis-stable.tar.gz &&   cd redis-stable &&   make &&   make install &&   cp -f src/redis-sentinel /usr/local/bin &&   mkdir -p /etc/redis &&   cp -f *.conf /etc/redis &&   rm -rf /tmp/redis-stable* &&   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf &&   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf &&   sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf &&   sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
+2015-01-23T14:53:32.897Z - info: [127.0.0.1:5001/redis:main] Step 1 : RUN cd /tmp &&   wget http://download.redis.io/redis-stable.tar.gz &&   tar xvzf redis-stable.tar.gz &&   cd redis-stable &&   make &&   make install &&   cp -f src/redis-sentinel /usr/local/bin &&   mkdir -p /etc/redis &&   cp -f *.conf /etc/redis &&   rm -rf /tmp/redis-stable* &&   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf &&   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf &&   sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf &&   sed -i 's/^\(logfile .*\)$/# \1/' /etc/redis/redis.conf
 
-2015-01-23T14:53:33.285Z - info: [127.0.0.1:5001/redis:master]  ---> Using cache
+2015-01-23T14:53:33.285Z - info: [127.0.0.1:5001/redis:main]  ---> Using cache
 
-2015-01-23T14:53:33.286Z - info: [127.0.0.1:5001/redis:master]  ---> 26bc665c9295
+2015-01-23T14:53:33.286Z - info: [127.0.0.1:5001/redis:main]  ---> 26bc665c9295
 
-2015-01-23T14:53:33.286Z - info: [127.0.0.1:5001/redis:master] Step 2 : VOLUME /data
+2015-01-23T14:53:33.286Z - info: [127.0.0.1:5001/redis:main] Step 2 : VOLUME /data
 
-2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:master]  ---> Using cache
+2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:main]  ---> Using cache
 
-2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:master]  ---> 6e4b36e3b7b6
+2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:main]  ---> 6e4b36e3b7b6
 
-2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:master] Step 3 : WORKDIR /data
+2015-01-23T14:53:33.645Z - info: [127.0.0.1:5001/redis:main] Step 3 : WORKDIR /data
 
-2015-01-23T14:53:34.007Z - info: [127.0.0.1:5001/redis:master]  ---> Using cache
+2015-01-23T14:53:34.007Z - info: [127.0.0.1:5001/redis:main]  ---> Using cache
 
-2015-01-23T14:53:34.008Z - info: [127.0.0.1:5001/redis:master]  ---> 9baac5d2adc3
+2015-01-23T14:53:34.008Z - info: [127.0.0.1:5001/redis:main]  ---> 9baac5d2adc3
 
-2015-01-23T14:53:34.008Z - info: [127.0.0.1:5001/redis:master] Step 4 : CMD redis-server /etc/redis/redis.conf
+2015-01-23T14:53:34.008Z - info: [127.0.0.1:5001/redis:main] Step 4 : CMD redis-server /etc/redis/redis.conf
 
-2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:master]  ---> Using cache
+2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:main]  ---> Using cache
 
-2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:master]  ---> 3910333848f1
+2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:main]  ---> 3910333848f1
 
-2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:master] Step 5 : EXPOSE 6379
+2015-01-23T14:53:34.341Z - info: [127.0.0.1:5001/redis:main] Step 5 : EXPOSE 6379
 
-2015-01-23T14:53:34.690Z - info: [127.0.0.1:5001/redis:master]  ---> Using cache
+2015-01-23T14:53:34.690Z - info: [127.0.0.1:5001/redis:main]  ---> Using cache
 
-2015-01-23T14:53:34.691Z - info: [127.0.0.1:5001/redis:master]  ---> 36c9365e8364
+2015-01-23T14:53:34.691Z - info: [127.0.0.1:5001/redis:main]  ---> 36c9365e8364
 
-2015-01-23T14:53:34.692Z - info: [127.0.0.1:5001/redis:master] Successfully built 36c9365e8364
+2015-01-23T14:53:34.692Z - info: [127.0.0.1:5001/redis:main] Successfully built 36c9365e8364
 
-2015-01-23T14:53:34.693Z - info: Image 127.0.0.1:5001/redis:master built succesfully
-2015-01-23T14:53:34.714Z - info: Docker confirmed the build of 127.0.0.1:5001/redis:master, author , created on 2015-01-23T01:29:49.039114234Z on docker 1.4.1
-2015-01-23T14:53:34.714Z - info: Tagging 127.0.0.1:5001/redis:master
-2015-01-23T14:53:34.723Z - info: Pushing 127.0.0.1:5001/redis:master to 127.0.0.1:5001
-2015-01-23T14:53:36.852Z - info: [127.0.0.1:5001/redis:master] The push refers to a repository [127.0.0.1:5001/redis] (len: 1)
-2015-01-23T14:53:36.897Z - info: [127.0.0.1:5001/redis:master] Sending image list
-2015-01-23T14:53:37.037Z - info: [127.0.0.1:5001/redis:master] Pushing repository 127.0.0.1:5001/redis (1 tags)
-2015-01-23T14:53:37.067Z - info: [127.0.0.1:5001/redis:master] Image 511136ea3c5a already pushed, skipping
-2015-01-23T14:53:37.070Z - info: [127.0.0.1:5001/redis:master] Image 53f858aaaf03 already pushed, skipping
-2015-01-23T14:53:37.073Z - info: [127.0.0.1:5001/redis:master] Image 837339b91538 already pushed, skipping
-2015-01-23T14:53:37.078Z - info: [127.0.0.1:5001/redis:master] Image 615c102e2290 already pushed, skipping
-2015-01-23T14:53:37.080Z - info: [127.0.0.1:5001/redis:master] Image b39b81afc8ca already pushed, skipping
-2015-01-23T14:53:37.084Z - info: [127.0.0.1:5001/redis:master] Image 5aa9da73df5b already pushed, skipping
-2015-01-23T14:53:37.086Z - info: [127.0.0.1:5001/redis:master] Image ec4206da3b16 already pushed, skipping
-2015-01-23T14:53:37.089Z - info: [127.0.0.1:5001/redis:master] Image e00f3af60b33 already pushed, skipping
-2015-01-23T14:53:37.095Z - info: [127.0.0.1:5001/redis:master] Image e0a769f35586 already pushed, skipping
-2015-01-23T14:53:37.099Z - info: [127.0.0.1:5001/redis:master] Image f6060d642297 already pushed, skipping
-2015-01-23T14:53:37.104Z - info: [127.0.0.1:5001/redis:master] Image 17eef17d52cf already pushed, skipping
-2015-01-23T14:53:37.112Z - info: [127.0.0.1:5001/redis:master] Image 57d0bc345ba9 already pushed, skipping
-2015-01-23T14:53:37.118Z - info: [127.0.0.1:5001/redis:master] Image 26bc665c9295 already pushed, skipping
-2015-01-23T14:53:37.124Z - info: [127.0.0.1:5001/redis:master] Image 6e4b36e3b7b6 already pushed, skipping
-2015-01-23T14:53:37.131Z - info: [127.0.0.1:5001/redis:master] Image 9baac5d2adc3 already pushed, skipping
-2015-01-23T14:53:37.138Z - info: [127.0.0.1:5001/redis:master] Image 3910333848f1 already pushed, skipping
-2015-01-23T14:53:37.146Z - info: [127.0.0.1:5001/redis:master] Image 36c9365e8364 already pushed, skipping
-2015-01-23T14:53:37.146Z - info: [127.0.0.1:5001/redis:master] Pushing tag for rev [36c9365e8364] on {http://127.0.0.1:5001/v1/repositories/redis/tags/master}
-2015-01-23T14:53:37.202Z - info: Pushed image 127.0.0.1:5001/redis:master to the registry at http://127.0.0.1:5001
-2015-01-23T14:53:37.203Z - info: Finished build of 127.0.0.1:5001/redis:master in a few seconds #SWAG
+2015-01-23T14:53:34.693Z - info: Image 127.0.0.1:5001/redis:main built succesfully
+2015-01-23T14:53:34.714Z - info: Docker confirmed the build of 127.0.0.1:5001/redis:main, author , created on 2015-01-23T01:29:49.039114234Z on docker 1.4.1
+2015-01-23T14:53:34.714Z - info: Tagging 127.0.0.1:5001/redis:main
+2015-01-23T14:53:34.723Z - info: Pushing 127.0.0.1:5001/redis:main to 127.0.0.1:5001
+2015-01-23T14:53:36.852Z - info: [127.0.0.1:5001/redis:main] The push refers to a repository [127.0.0.1:5001/redis] (len: 1)
+2015-01-23T14:53:36.897Z - info: [127.0.0.1:5001/redis:main] Sending image list
+2015-01-23T14:53:37.037Z - info: [127.0.0.1:5001/redis:main] Pushing repository 127.0.0.1:5001/redis (1 tags)
+2015-01-23T14:53:37.067Z - info: [127.0.0.1:5001/redis:main] Image 511136ea3c5a already pushed, skipping
+2015-01-23T14:53:37.070Z - info: [127.0.0.1:5001/redis:main] Image 53f858aaaf03 already pushed, skipping
+2015-01-23T14:53:37.073Z - info: [127.0.0.1:5001/redis:main] Image 837339b91538 already pushed, skipping
+2015-01-23T14:53:37.078Z - info: [127.0.0.1:5001/redis:main] Image 615c102e2290 already pushed, skipping
+2015-01-23T14:53:37.080Z - info: [127.0.0.1:5001/redis:main] Image b39b81afc8ca already pushed, skipping
+2015-01-23T14:53:37.084Z - info: [127.0.0.1:5001/redis:main] Image 5aa9da73df5b already pushed, skipping
+2015-01-23T14:53:37.086Z - info: [127.0.0.1:5001/redis:main] Image ec4206da3b16 already pushed, skipping
+2015-01-23T14:53:37.089Z - info: [127.0.0.1:5001/redis:main] Image e00f3af60b33 already pushed, skipping
+2015-01-23T14:53:37.095Z - info: [127.0.0.1:5001/redis:main] Image e0a769f35586 already pushed, skipping
+2015-01-23T14:53:37.099Z - info: [127.0.0.1:5001/redis:main] Image f6060d642297 already pushed, skipping
+2015-01-23T14:53:37.104Z - info: [127.0.0.1:5001/redis:main] Image 17eef17d52cf already pushed, skipping
+2015-01-23T14:53:37.112Z - info: [127.0.0.1:5001/redis:main] Image 57d0bc345ba9 already pushed, skipping
+2015-01-23T14:53:37.118Z - info: [127.0.0.1:5001/redis:main] Image 26bc665c9295 already pushed, skipping
+2015-01-23T14:53:37.124Z - info: [127.0.0.1:5001/redis:main] Image 6e4b36e3b7b6 already pushed, skipping
+2015-01-23T14:53:37.131Z - info: [127.0.0.1:5001/redis:main] Image 9baac5d2adc3 already pushed, skipping
+2015-01-23T14:53:37.138Z - info: [127.0.0.1:5001/redis:main] Image 3910333848f1 already pushed, skipping
+2015-01-23T14:53:37.146Z - info: [127.0.0.1:5001/redis:main] Image 36c9365e8364 already pushed, skipping
+2015-01-23T14:53:37.146Z - info: [127.0.0.1:5001/redis:main] Pushing tag for rev [36c9365e8364] on {http://127.0.0.1:5001/v1/repositories/redis/tags/main}
+2015-01-23T14:53:37.202Z - info: Pushed image 127.0.0.1:5001/redis:main to the registry at http://127.0.0.1:5001
+2015-01-23T14:53:37.203Z - info: Finished build of 127.0.0.1:5001/redis:main in a few seconds #SWAG
 ```
 
 Problems? [Open an issue](https://github.com/namshi/roger/issues)! Suggestions? Feel free
